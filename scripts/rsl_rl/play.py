@@ -33,7 +33,7 @@ import gymnasium as gym
 import os
 import torch
 
-from isaacLab.manipulation.algorithms.rsl_rl.rsl_rl.runners import OnPolicyRunner
+from rsl_rl.runners import OnPolicyRunner
 
 import isaaclab_tasks  # noqa: F401
 from isaaclab_tasks.utils import get_checkpoint_path, parse_env_cfg
@@ -78,7 +78,8 @@ def main():
 
     # export policy to onnx
     export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
-    export_policy_as_onnx(ppo_runner.alg.actor_critic, export_model_dir, filename="policy.onnx")
+    # export_policy_as_onnx(ppo_runner.alg.actor_critic, export_model_dir, filename="policy.onnx") # rsl-rl-lib==2.2.3
+    export_policy_as_onnx(ppo_runner.alg.policy, export_model_dir, filename="policy.onnx")   
 
     # reset environment
     obs, _ = env.get_observations()
