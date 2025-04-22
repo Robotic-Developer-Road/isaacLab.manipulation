@@ -112,6 +112,9 @@ python3 scripts/rsl_rl/train.py --task Template-Isaac-Reach-Franka-v0 --num_envs
 ```bash
 python3 scripts/rsl_rl/train.py --task Template-Isaac-Reach-UR10-v0 --num_envs 4096 --headless
 ```
+```bash
+python3 scripts/rsl_rl/train.py --task Template-Isaac-Reach-SO-ARM100-8J-v0 --num_envs 4096 --headless
+```
 4.2 Dextrous Hand
 ```bash
 python3 scripts/rsl_rl/train.py --task Template-Isaac-Repose-Cube-Allegro-v0 --num_envs 4096 --headless
@@ -122,14 +125,17 @@ python3 scripts/rsl_rl/train.py --task Template-Isaac-Repose-Cube-Allegro-v0 --n
 
 5.1 RobotArm
 ```bash
-python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-Kinova-Play-v0--num_envs 16
+python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-Kinova-Play-v0 --num_envs 16
 ```
 ```bash
 # You can also use train.py if you dont need to add some additional configs.
 python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-Franka-Play-v0 --num_envs 16
 ```
 ```bash
-python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-Franka-Play-v0 --num_envs 16
+python3 scripts/rsl_rl/train.py --task Template-Isaac-Reach-UR10-v0 --num_envs 4096 --headless
+```
+```bash
+python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-SO-ARM100-8J-Play-v0 --num_envs 16
 ```
 5.2 Dextrous Hand
 ```bash
@@ -139,6 +145,7 @@ python3 scripts/rsl_rl/play.py --task Template-Isaac-Repose-Cube-Allegro-Play-v0
 ## Author
 **Author: Qiwei Wu<br />
 Email: nathan.wuqw@gmail.com**
+
 
 
 
