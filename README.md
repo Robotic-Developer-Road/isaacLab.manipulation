@@ -1,7 +1,7 @@
 # Manipulation Template for IsaacLab
 
-[![IsaacSim](https://img.shields.io/badge/IsaacSim-4.0.0-silver.svg)](https://docs.omniverse.nvidia.com/isaacsim/latest/overview.html)
-[![IsaacLab](https://img.shields.io/badge/IsaacLab-0.3.1-silver)](https://isaac-sim.github.io/IsaacLab/)
+[![IsaacSim](https://img.shields.io/badge/IsaacSim-4.5.0-silver.svg)](https://docs.omniverse.nvidia.com/isaacsim/latest/overview.html)
+[![IsaacLab](https://img.shields.io/badge/IsaacLab-2.0.0-silver)](https://isaac-sim.github.io/IsaacLab/)
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://docs.python.org/3/whatsnew/3.10.html)
 [![Linux platform](https://img.shields.io/badge/platform-linux--64-orange.svg)](https://releases.ubuntu.com/20.04/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://pre-commit.com/)
@@ -11,18 +11,15 @@
 
 This repository is based on the old version (orbit) of the orbit extension repository from isaaclab and provides a template for research on robot manipulation tasks. It is independent of isaaclab and allows for customization of the details of manipulation tasks.
 
-
-
 ## Setup
-
-
 
 ### Dependencies
 
 This template depends on Isaac Sim and IsaacLab. 
 
-- [Isaac Sim](https://docs.omniverse.nvidia.com/isaacsim/latest/index.html)
-- [Isaac Lab](https://isaac-sim.github.io/IsaacLab/)
+- [Isaac Sim 4.5.0](https://docs.isaacsim.omniverse.nvidia.com/latest/index.html)
+- [Isaac Sim 4.2.0](https://docs.omniverse.nvidia.com/isaacsim/latest/index.html)
+- [Isaac Lab 2.0.0](https://isaac-sim.github.io/IsaacLab/)
 
 It is recommended to install in a virtual environment. IsaacLab provides a default virtual environment that can be activated directly.
 ```bash
@@ -33,7 +30,7 @@ conda activate isaaclab
 ```bash
 git clone https://github.com/NathanWu7/isaacLab.manipulation.git
 cd isaacLab.manipulation
-python -m pip install -e .
+python3 -m pip install -e .
 ```
 
 ### Convert urdf to usd
@@ -57,11 +54,11 @@ mkdir isaacLab.manipulation/isaacLab/manipulation/algorithms
 cd isaacLab.manipulation/isaacLab/manipulation/algorithms
 git clone https://github.com/leggedrobotics/rsl_rl.git
 cd rsl_rl
-python -m pip install -e .
+python3 -m pip install -e .
 
 ## refresh index
 cd isaacLab.manipulation
-python -m pip install -e .
+python3 -m pip install -e .
 ```
 You can design your own RL Algorithm by editing "modules" and "algorithms" in RSL-RL
 
@@ -132,7 +129,7 @@ python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-Kinova-Play-v0 --num_
 python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-Franka-Play-v0 --num_envs 16
 ```
 ```bash
-python3 scripts/rsl_rl/train.py --task Template-Isaac-Reach-UR10-v0 --num_envs 4096 --headless
+python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-UR10-Play-v0 --num_envs 16
 ```
 ```bash
 python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-SO-ARM100-8J-Play-v0 --num_envs 16
@@ -142,12 +139,38 @@ python3 scripts/rsl_rl/play.py --task Template-Isaac-Reach-SO-ARM100-8J-Play-v0 
 python3 scripts/rsl_rl/play.py --task Template-Isaac-Repose-Cube-Allegro-Play-v0 --num_envs 16
 ```
 
+### 6. View the logs of trained policy.
+
+6.1 RobotArm
+```bash
+tensorboard --logdir=logs/rsl_rl/reach_kinova
+```
+```bash
+tensorboard --logdir=logs/rsl_rl/franka_reach
+```
+```bash
+tensorboard --logdir=logs/rsl_rl/reach_ur10
+```
+```bash
+tensorboard --logdir=logs/rsl_rl/reach_so_arm100_8j
+```
+6.2 Dextrous Hand
+```bash
+tensorboard --logdir=logs/rsl_rl/allegro_cube
+```
+
+### 7. sim2sim with mujoco
+
+TODO
+
+### 8. sim2real with lerobot SO ARM100-8J manipulation
+
+TODO
+
 ## Author
 **Author: Qiwei Wu<br />
 Email: nathan.wuqw@gmail.com**
 
-
-
-
-
-
+## Contributors
+**Contributors: ruoxi521<br />
+Email: suruoxi521@gmail.com**
